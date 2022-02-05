@@ -16,11 +16,11 @@ const SCHEDULES = [
 ];
 
 const COURSES = [
-  "Software Atelier 2",
-  "Computer Networking",
-  "Software Atelier 4",
-  "Machine Learning",
-  "Theory of Computation",
+  {name: "Software Atelier 2", color: -1},
+  {name: "Computer Networking", color: -1},
+  {name: "Software Atelier 4", color: -1},
+  {name: "Machine Learning", color: -1},
+  {name: "Theory of Computation", color: -1},
 ]
 
 let i = 0;
@@ -57,12 +57,14 @@ class App extends React.Component {
                 format: 'ics'
               }))}
               eventDataTransform={(e) => {
-                if (!COURSES.find(c => e.title && e.title.startsWith(c))) {
-                  return {};
-                }
+                const c =COURSES.find(c => e.title && e.title.startsWith(c.name));
+                if (!c) return {};
 
-                e.color = COLORS[i];
-                i++;
+                if (c.color === -1) {
+                  c.color = i;
+                  i++;
+                }
+                e.color = COLORS[c.color];
                 return e;
               }}
               eventClick={info => {
