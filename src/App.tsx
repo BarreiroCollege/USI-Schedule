@@ -65,6 +65,7 @@ class App extends React.Component {
                   i++;
                 }
                 e.color = COLORS[c.color];
+                e.title = `[${(e.extendedProps || {location: "?"}).location}] ${e.title}`;
                 return e;
               }}
               eventClick={info => {
