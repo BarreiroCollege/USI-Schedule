@@ -21,6 +21,7 @@ const COURSES = [
   {name: "Software Atelier 4", color: -1},
   {name: "Machine Learning", color: -1},
   {name: "Theory of Computation", color: -1},
+  {name: "Programming Challenges Lab", color: -1},
 ]
 
 let i = 0;
